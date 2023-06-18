@@ -1,0 +1,21 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
+provider "aws" {
+  region                   = var.region
+  shared_credentials_files = [var.credential_path]
+  profile                  = var.aws_cli_profile
+
+  default_tags {
+    tags = {
+      "Terraform"   = "true"
+      "Environment" = var.env_name
+    }
+  }
+}
