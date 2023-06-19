@@ -1,5 +1,5 @@
 // API Key for WeatherAPI.com
-const apiKey = '';
+const apiKey = 'ef2d5dd72aa94e44a73155448231105';
 
 // Function to fetch the weather data from WeatherAPI.com
 async function fetchWeatherData(city) {
