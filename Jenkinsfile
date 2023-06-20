@@ -14,7 +14,7 @@ pipeline {
                 checkout scm
             }
         }
-
+/*
  // **************** Build *****************************************   
         stage('Build') {
             steps {
@@ -28,7 +28,7 @@ pipeline {
 
             }        
         }
-
+ */
 // ************************ Docker Build *************************
         stage('Docker Build') {
             steps {
