@@ -26,12 +26,17 @@ pipeline {
         stage('Test') {
             steps {
               script{
-                docker.image('nginx').withRun('-p 8888:80 \
+                def test = docker.image('nginx').withRun('-p 8888:80 \
                                                -v ./nginx/:/etc/nginx/conf.d/ \
                                                -v ./src/:/usr/share/nginx/html/weatherapicom/ \
                                                -v ./src/index.html:/usr/share/nginx/html/index.html') { c ->
-                    sh 'curl -i http://localhost:8888/abc'
+                    sh "curl -s -o /dev/null -w '%{http_code}' http://localhost:8888"
                 }
+                 if (test == '200') {
+            echo "Quality gate passed. Web application is working."
+          } else {
+            error "Quality gate failed. Web application returned HTTP status code ${response}."
+          }
               }  
             }
         }        
