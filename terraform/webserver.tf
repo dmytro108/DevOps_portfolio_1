@@ -5,15 +5,15 @@ resource "aws_instance" "webserver" {
   vpc_security_group_ids = [aws_security_group.webserver_public_access.id]
   key_name               = aws_key_pair.webserver.key_name
 
-  user_data = <<EOF
-                  #! /bin/bash
-                  sudo yum install -y update
+  user_data = <<-EOF
+                  #!/usr/bin/bash
+                  sudo yum -y update
                   sudo yum install -y yum-utils
                   sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
                   sudo yum install -y docker-ce docker-ce-cli containerd.io
                   sudo systemctl start docker
                   sudo usermod -aG docker ec2-user
-                  docker run -p 80:80 -n weatherapp_ dmytro108/weatherapp
+                  docker run -d -p 80:80 --name weatherapp_ dmytro108/weatherapp
               EOF
 
   tags = {
