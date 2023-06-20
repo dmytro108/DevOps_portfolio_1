@@ -5,12 +5,20 @@
 3. Create an AWS EC2 user with rights enough to check the assignment and update the Security Group for getting access to the Web server
 ## Solution:
 ### Infrastructure
-The whole AWS infrastructure created with Terraform scripts. See the [terraform](/terraform) folder for the detalies. It creates VPC and a publick subnet with a free tier EC2 instance provisioned with RHEL9 ami Docker. As well it creates user *d.john* with Power user role.
+The whole AWS infrastructure created with Terraform scripts. See the [terraform](/terraform) folder for the detalies. It creates VPC and a publick subnet with a free tier EC2 instance provisioned with RHEL9 ami Docker. As well it creates user *d.john* with Power user role. The `terraform apply` command outputs the user password, server public IP and the Domain name.
+To connect the server via ssh, please, use the privat key from [secrets](/secrets) folder. Place the *id_ed25519* file in your *~/.ssh* folder and run: 
+```
+ssh ec2_user@<server_ip>
+```
 ### Web App
-The web application utilizes publick free [API](http://weatherapi.com) from weatherapi.com. It displays current weather report in some Europian capitals. The applicatin is written in JavaScript and runs in browser. See HTML and JS dources in [src](/src) folder. The NGINX configuration file is placed in [nginx](/nginx) folder. It is a */etc/nginx/config.d/* including config file.
+The web application utilizes publick free [API](http://weatherapi.com) from weatherapi.com. It displays current weather report in some Europian capitals. The applicatin is written in JavaScript and runs in browser. See HTML and JS sources in [src](/src) folder. The NGINX configuration file is placed in [nginx](/nginx) folder. It is a */etc/nginx/config.d/* including config file. Web application is accessable by URL like:
+```
+http://<server_addr>/weather
+```
 #### CI
 The Web app is built as Docker image. See the [Dockerfile](/Dockerfile) for detailes. You can find the image [dmytro108/weatherapp](https://hub.docker.com/r/dmytro108/weatherapp) on the Docker Hub registry. 
 #### Deployment
 Deployment is a manual process. Run Docker container on the webserver:
-
-`docker run -d -p 80:80 --name weatherapp dmytro108/weatherapp:latest`
+```
+docker run -d -p 80:80 --name weatherapp dmytro108/weatherapp:latest
+```
