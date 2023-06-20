@@ -32,6 +32,7 @@ pipeline {
                                                -v ./src/index.html:/usr/share/nginx/html/index.html') { c ->
                     sh "curl -s -o /dev/null -w '%{http_code}' http://localhost:8888"
                 }
+                echo test
                  if (test == '200') {
             echo "Quality gate passed. Web application is working."
           } else {
