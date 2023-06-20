@@ -21,14 +21,21 @@ pipeline {
                 
             }                
         }
- 
+  */
  // ******************** Test ************************************   
         stage('Test') {
             steps {
+                    //git '…'
+                    docker.image('nginx').withRun('-p 80:8888 \
+                                                  -v ./nginx/default.conf:/etc/nginx/conf.d/ \
+                                                  -v ./src/:/usr/share/nginx/html/weatherapicom/ \
+                                                  -v ./src/index.html:/usr/share/nginx/html/index.html') {c ->
+                    sh 'cirl -I http://localhost:8888/'
 
+}
             }        
         }
- */
+
 // ************************ Docker Build *************************
         stage('Docker Build') {
             steps {
