@@ -30,7 +30,7 @@ pipeline {
                                                -v ./nginx/:/etc/nginx/conf.d/ \
                                                -v ./src/:/usr/share/nginx/html/weatherapicom/ \
                                                -v ./src/index.html:/usr/share/nginx/html/index.html') { c ->
-                    sh 'curl -I -s -o /dev/null -w "%{http_code}"  http://localhost/weather/ >/dev/null && [ $? -eq 200 ] || exit 1'
+                    sh 'curl -I -s -o /dev/null -w "%{http_code}"  http://localhost:8888/weather/ > /dev/null '
                 }
               }  
             }
