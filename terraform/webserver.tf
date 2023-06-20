@@ -13,6 +13,7 @@ resource "aws_instance" "webserver" {
                   sudo yum install -y docker-ce docker-ce-cli containerd.io
                   sudo systemctl start docker
                   sudo usermod -aG docker ec2-user
+                  docker run -p 80:80 -n weatherapp_ dmytro108/weatherapp
               EOF
 
   tags = {
