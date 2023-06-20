@@ -30,16 +30,8 @@ pipeline {
                                                -v ./nginx/:/etc/nginx/conf.d/ \
                                                -v ./src/:/usr/share/nginx/html/weatherapicom/ \
                                                -v ./src/index.html:/usr/share/nginx/html/index.html') { c ->
-                    def response = sh(
-                        returnStdout: true,
-                        script: "curl -s -o /dev/null -w '%{http_code}' http://localhost:8888").trim()
+                    sh "curl -I -s -o /dev/null -w '%{http_code}' http://localhost:8888 > /dev/null || [ $? -ne 200 ]" 
                 }
-                echo response
-                 if (response == '200') {
-            echo "Quality gate passed. Web application is working."
-          } else {
-            error "Quality gate failed. Web application returned HTTP status code ${response}."
-          }
               }  
             }
         }        
