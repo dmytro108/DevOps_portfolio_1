@@ -26,7 +26,7 @@ pipeline {
         stage('Test') {
             steps {
               script{
-                docker.image('nginx').withRun('-p 80:8888 \
+                docker.image('nginx').withRun('-p 8888:80 \
                                                -v ./nginx/default.conf:/etc/nginx/conf.d/ \
                                                -v ./src/:/usr/share/nginx/html/weatherapicom/ \
                                                -v ./src/index.html:/usr/share/nginx/html/index.html') { c ->
