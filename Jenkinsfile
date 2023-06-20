@@ -30,7 +30,7 @@ pipeline {
                                                -v ./nginx/:/etc/nginx/conf.d/ \
                                                -v ./src/:/usr/share/nginx/html/weatherapicom/ \
                                                -v ./src/index.html:/usr/share/nginx/html/index.html') { c ->
-                    sh 'curl -I http://localhost:8888/'
+                    sh 'curl -I http://localhost:888/'
                 }
               }  
             }
