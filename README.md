@@ -16,7 +16,7 @@ The web application utilizes publick free [API](http://weatherapi.com) from weat
 http://<server_addr>/weather
 ```
 #### CI
-The Web app is built as Docker image. See the [Dockerfile](/Dockerfile) for detailes. You can find the image [dmytro108/weatherapp](https://hub.docker.com/r/dmytro108/weatherapp) on the Docker Hub registry. 
+Simple CI pipeline was built with Jenkins, please see [Jenkinsfile](/Jenkinsfile)  for detailes. It has a simple quality gate which checks if the web app is accesible. If the the gate passed it builds Docker image and pushes it to the Docker Hub registry. See the [Dockerfile](/Dockerfile) for detailes. You can find the image [dmytro108/weatherapp](https://hub.docker.com/r/dmytro108/weatherapp) on the Docker Hub registry. 
 #### Deployment
 Deployment is a manual process. Run Docker container on the webserver:
 ```
