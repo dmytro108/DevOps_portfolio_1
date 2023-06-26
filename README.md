@@ -8,7 +8,7 @@
 The whole AWS infrastructure created with Terraform scripts. See the [terraform](/terraform) folder for the detalies. It creates VPC and a publick subnet with a free tier EC2 instance provisioned with RHEL9 ami Docker. As well it creates user *d.john* with Power user role. The `terraform apply` command outputs the user password, server public IP and the Domain name.
 To connect the server via ssh, please, use the privat key from [secrets](/secrets) folder. Place the *id_ed25519* file in your *~/.ssh* folder and run: 
 ```
-ssh ec2_user@<server_ip>
+ssh ec2-user@<server_ip>
 ```
 ### Web App
 The web application utilizes publick free [API](http://weatherapi.com) from weatherapi.com. It displays current weather report in some Europian capitals. The applicatin is written in JavaScript and runs in browser. See HTML and JS sources in [src](/src) folder. The NGINX configuration file is placed in [nginx](/nginx) folder. It is a */etc/nginx/config.d/* including config file. Web application is accessable by URL like:
