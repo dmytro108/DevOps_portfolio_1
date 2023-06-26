@@ -11,6 +11,6 @@ priv_net_cidrs     = [""]                 // No Privat nets needeed
 pub_net_cidrs      = ["192.168.101.0/24"] // Public nets
 allowed_ports      = [22, 80, 443]
 allowed_ip         = ["77.68.11.254/32", "81.131.179.113/32"]
-webserver_pub_key  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJLt/I5caZ5DNMgxHnfInq+k46ZS3dVh0OziZPjE8Y0a ed25519-key-20230408"
+webserver_pub_key  = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFitrOCPGVDbp5WQJ2agrMStKb2ODbTdygY3ZARPxz63"
 user_name          = "d.john"
 user_path          = "/"
