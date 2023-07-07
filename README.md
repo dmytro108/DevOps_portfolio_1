@@ -11,7 +11,7 @@ To connect the EC2 instance via ssh, please, use the private key from [secrets](
 ssh ec2-user@<server_ip>
 ```
 ### Web App
-The web application utilizes publick free [API](http://weatherapi.com) from weatherapi.com. It displays current weather report in some Europian capitals. The applicatin is written in JavaScript and runs in browser. See HTML and JS sources in [src](/src) folder. The NGINX configuration file is placed in [nginx](/nginx) folder. It is a */etc/nginx/config.d/* including config file. Web application is accessable by URL like:
+The web application utilizes public free [API](http://weatherapi.com) from weatherapi.com. It displays current weather report in some Europian capitals. The applicatin is written in JavaScript and runs in browser. See HTML and JS sources in [src](/src) folder. The NGINX configuration file is placed in [nginx](/nginx) folder. It is a */etc/nginx/config.d/* including config file. Web application is accessable by URL like:
 ```
 http://<server_addr>/weather
 ```
