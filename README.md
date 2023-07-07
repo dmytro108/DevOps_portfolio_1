@@ -6,7 +6,7 @@
 ## Solution:
 ### Infrastructure
 The whole AWS infrastructure created with Terraform scripts. See the [terraform](/terraform) folder for the detalies. It creates VPC and a publick subnet with a free tier EC2 instance provisioned with RHEL9 ami Docker. As well it creates user *d.john* with Power user role. The `terraform apply` command outputs the user password, server public IP and the Domain name.
-To connect the server via ssh, please, use the privat key from [secrets](/secrets) folder. Place the *id_ed25519* file in your *~/.ssh* folder and run: 
+To connect the EC2 instance via ssh, please, use the private key from [secrets](/secrets) folder. Place the *id_ed25519* file in your *~/.ssh* folder and run: 
 ```
 ssh ec2-user@<server_ip>
 ```
